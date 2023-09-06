@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Conta { 
@@ -9,17 +11,25 @@ public class Conta {
         this.numeroConta = numeroConta;
         this.agencia = agencia;
         this.saldo = saldo;
-        transacaos = new 
+        this.transacaos = new ArrayList<>();
+    }
+    public void addHistoricoTransacoes(double valor, String tipo){
+        Transacao t = new Transacao(tipo, valor, LocalDate.now());
+        transacaos.add(t);
+    }
+    public void consultarExtrato(){
+        transacaos.forEach(t -> System.out.println(t));
+        System.out.println("Saldo Atual: " + this.saldo);
     }
     public void depositar(double valor){
-        saldo += valor;
+        this.saldo += valor;
+        addHistoricoTransacoes(valor, "Deposito");
     }
     public void sacar(double valor){
         if (this.saldo >= valor){
             System.out.println("Saque realizado com sucesso! ");
-            saldo -= valor;
-            Transacao t = new Transacao();
-            transacaos.add(t);
+            this.saldo -= valor;
+            addHistoricoTransacoes(valor, "Saque");
         }
         else {
             System.out.println("Seu saldo é insuficiente para essa transação");
@@ -27,9 +37,5 @@ public class Conta {
 
 }
     public void transferir(){
-    }
-    public void consultarExtrato(){
-        transacaos.forEach(t -> System.out.println(t));
-        System.out.println("Saldo Atual: " + this.saldo);
     }
 }
