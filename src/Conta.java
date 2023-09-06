@@ -1,20 +1,35 @@
-import java.util.Scanner;
+import java.util.List;
 
 public class Conta { 
-    String titular, numeroConta, agencia;
+    String  numeroConta, agencia;
     double saldo;
-    Scanner scanner = new Scanner(System.in);
+    List<Transacao> transacaos;
 
-    public Conta(String numeroConta, String titular, String agencia, double saldo){
+    public Conta(String numeroConta, String agencia, double saldo){
         this.numeroConta = numeroConta;
         this.agencia = agencia;
         this.saldo = saldo;
-        this.titular = titular;
+        transacaos = new 
     }
-    public void imprimir(){
-        System.out.println("Numero: " + this.numeroConta);
-        System.out.println("Titular: " + this.titular);
-        System.out.println("agencia: " + this.agencia);
-        System.out.println("Saldo: " + this.saldo);
+    public void depositar(double valor){
+        saldo += valor;
+    }
+    public void sacar(double valor){
+        if (this.saldo >= valor){
+            System.out.println("Saque realizado com sucesso! ");
+            saldo -= valor;
+            Transacao t = new Transacao();
+            transacaos.add(t);
+        }
+        else {
+            System.out.println("Seu saldo é insuficiente para essa transação");
+        }
+
+}
+    public void transferir(){
+    }
+    public void consultarExtrato(){
+        transacaos.forEach(t -> System.out.println(t));
+        System.out.println("Saldo Atual: " + this.saldo);
     }
 }
