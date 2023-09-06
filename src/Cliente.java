@@ -6,6 +6,8 @@ public class Cliente {
         this.cpf = cpf;
         this.email = email;
     }
+
+    
     public void imprimir(){
         System.out.println("Nome: " + this.nome);
         System.out.println("email: " + this.email);
