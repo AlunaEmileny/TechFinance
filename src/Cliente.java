@@ -1,16 +1,32 @@
 public class Cliente {
     
-    String nome, cpf, email;
+    private String nome, cpf, email;
+
     public Cliente(String nome, String cpf, String email){
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
     }
 
-    
-    public void imprimir(){
-        System.out.println("Nome: " + this.nome);
-        System.out.println("email: " + this.email);
-        System.out.println("cpf: " + this.cpf);
+    public String getNome() {
+        return nome;
+    }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    public String getCpf() {
+        return cpf;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String toString(){
+        return "Nome: " + this.getNome() + 
+               "\nCPF: " + this.getCpf() + 
+               "\nEmail: " + this.getEmail();
     }
 }

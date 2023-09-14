@@ -9,13 +9,15 @@ public class Banco {
         System.out.println("Olá, digite seu email: ");
         String email = scanner.next();
         Cliente c1 = new Cliente(nome, cpf, email);
-        c1.imprimir();
+        c1.toString();
 
         // Teste da class Conta
-        Conta conta = new Conta("1234321-1", "0001", 900);
+        Conta conta = new Conta(c1,"1234321-1", "0001", 900);
         conta.sacar(230);
         conta.consultarExtrato();
-        conta.sacar(1000);
+        // conta.sacar(1000);
+        conta.transferir(70);
+        conta.consultarExtrato();
         scanner.close();
 
     }
